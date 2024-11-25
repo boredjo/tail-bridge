@@ -2,7 +2,7 @@ import docker
 import subprocess
 import time
 
-import tailscale
+from . import tailscale
 
 # Connect to the Docker daemon
 client = docker.from_env()

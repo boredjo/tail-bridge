@@ -14,7 +14,7 @@ def install(container, verbose=True):
         print(f"Unexpected error: {e}")
 
 
-def _install_curl(container, verbose=True)
+def _install_curl(container, verbose=True):
     if container.exec_run("sh -c 'apt update'", stdout=True, stderr=True).exit_code == 0:
         # apt is installed
         if verbose: print("Installing curl with apt")
@@ -39,13 +39,7 @@ def _install_with_script(container, verbose=True):
 
 def login(container, verbose=True):
     container.exec_run(
-        "sh -c '"
-        "tailscale up "
-        f"--authkey={os.environ['TS_AUTHKEY']} "
-        f"--hostname={container.name} "
-        f"--accept-dns={os.environ['TS_ACCEPT_DNS']}"
-        os.environ['TS_EXTRA_ARGS']
-        detach=True
+        f"sh -c 'tailscale up --authkey={os.environ['TS_AUTHKEY']} --hostname={container.name} --accept-dns={os.environ['TS_ACCEPT_DNS']} {os.environ['TS_EXTRA_ARGS']} '"
     )
 
 
