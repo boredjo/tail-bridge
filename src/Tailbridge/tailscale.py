@@ -31,7 +31,7 @@ def _install_with_script(container, verbose=True):
     container.exec_run(
         "sh -c '"
         "curl -fsSL https://tailscale.com/install.sh | sh && "
-        "tailscaled --state=/var/lib/tailscale/tailscaled.state"
+        "tailscaled --state=/var/lib/tailscale/tailscaled.state --tun=userspace-networking"
         "'"
     )
     if verbose: print("Tailscale is installed")
